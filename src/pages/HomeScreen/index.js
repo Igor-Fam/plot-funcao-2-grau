@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Dimensions, TextInput } from 'react-native';
 import {LineChart, BarChart, PieChart, ProgressChart, ContributionGraph, StackedBarChart} from 'react-native-chart-kit';
 import Slider from '@react-native-community/slider';
 
+import styles from './styles';
+
 export default function HomeScreen() {
 
   const x = [];
@@ -18,7 +20,7 @@ export default function HomeScreen() {
   const y = x.map(val => a*Math.pow(val, 2) + b*val +c);
 
   return (
-    <View>
+    <View style={styles.main}>
       <Text></Text>
       <LineChart
         data={{
@@ -29,58 +31,65 @@ export default function HomeScreen() {
             }
           ]
         }}
-        width={Dimensions.get("window").width} // from react-native
+        width={Dimensions.get("window").width*0.95} // from react-native
         height={220}
         yAxisInterval={1} // optional, defaults to 1
+        style={styles.chart}
         chartConfig={{
-          backgroundGradientFrom: "#c9c9c9",
-          backgroundGradientTo: "#999999",
+          backgroundGradientFrom: "#ededed",
+          backgroundGradientTo: "#d6d6d6",
           decimalPlaces: 2, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(54, 107, 61, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          style: {
-            borderRadius: 50
-          },
+          color: (opacity = 1) => `rgba(15, 105, 250, ${opacity})`,
+          labelColor: (opacity = 1) => `rgba(100, 100, 100, ${opacity})`,
           propsForDots: {
             r: "0",
             strokeWidth: "2",
-            stroke: "#175426"
+            stroke: "#0f69fa"
           }
         }}
       />
-      <Text style={{marginTop: 50,}} >a: {a}</Text>
-      <Slider
-        style={{width: 200, height: 40}}
-        minimumValue={-10}
-        maximumValue={10}
-        minimumTrackTintColor="#FFFFFF"
-        maximumTrackTintColor="#000000"
-        step={1}
-        value={a}
-        onValueChange={value=>setA(value)}
-      />
-      <Text style={{marginTop: 50,}} >b: {b}</Text>
-      <Slider
-        style={{width: 200, height: 40}}
-        minimumValue={-10}
-        maximumValue={10}
-        minimumTrackTintColor="#FFFFFF"
-        maximumTrackTintColor="#000000"
-        step={1}
-        value={b}
-        onValueChange={value=>setB(value)}
-      />
-      <Text style={{marginTop: 50,}} >c: {c}</Text>
-      <Slider
-        style={{width: 200, height: 40}}
-        minimumValue={-10}
-        maximumValue={10}
-        minimumTrackTintColor="#FFFFFF"
-        maximumTrackTintColor="#000000"
-        step={1}
-        value={c}
-        onValueChange={value=>setC(value)}
-      />
+      <View style={styles.sliderbox}>
+        <Text>a: {a}</Text>
+        <Slider
+          style={{width: 200, height: 40}}
+          minimumValue={-10}
+          maximumValue={10}
+          minimumTrackTintColor="#FFFFFF"
+          maximumTrackTintColor="#000000"
+          thumbTintColor="#0f69fa"
+          step={1}
+          value={a}
+          onValueChange={value=>setA(value)}
+        />
+      </View>
+      <View style={styles.sliderbox}>
+        <Text>b: {b}</Text>
+        <Slider
+          style={{width: 200, height: 40}}
+          minimumValue={-10}
+          maximumValue={10}
+          minimumTrackTintColor="#FFFFFF"
+          maximumTrackTintColor="#000000"
+          thumbTintColor="#0f69fa"
+          step={1}
+          value={b}
+          onValueChange={value=>setB(value)}
+        />
+      </View>
+      <View style={styles.sliderbox}>
+        <Text>c: {c}</Text>
+        <Slider
+          style={{width: 200, height: 40}}
+          minimumValue={-10}
+          maximumValue={10}
+          minimumTrackTintColor="#FFFFFF"
+          maximumTrackTintColor="#000000"
+          thumbTintColor="#0f69fa"
+          step={1}
+          value={c}
+          onValueChange={value=>setC(value)}
+        />
+      </View>
     </View>
   );
 }

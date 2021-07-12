@@ -10,7 +10,7 @@ function Routes() {
   return (
     <NavigationContainer>
       <AppStack.Navigator>
-        <AppStack.Screen name="Home" component={HomeScreen} />
+        <AppStack.Screen name="Gráfico de uma função de segundo grau" component={HomeScreen} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
